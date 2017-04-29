@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block main %}
+ {% include "background.html" %}
+
+<h1 class="page-header"></h1>
+
+<div align="center" style="margin:auto" >
+    <img width="500" height="150" src ="/static/imgs/wishlist.png"/>
+ </div>
+<div>
+           <form method="post">
+          <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control"name="email" style="width:500px" id="exampleInputEmail1" placeholder="example@live.com">
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="reset" class="btn btn-default" data-dismiss="modal">Reset</button>
+        <button type="submit" class="btn btn-warning">Send </button>
+      </div>
+    </div>
+    </form>
+    
+</div>
+{% endblock %}

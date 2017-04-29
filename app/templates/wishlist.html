@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block main %}
+ {% include "background.html" %}
+
+<h1 class="page-header"></h1>
+
+<div align="center" style="margin:auto" >
+    <img width="500" height="150" src ="/static/imgs/wishlist.png"/>
+        {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <div class="alert alert-success">
+        <ul class="flashes">
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+    {% endwith %}
+ </div>
+
+<div>
+    <form  method="post">
+    
+    
+    <button type="submit" name="add" class="btn btn-warning"style="width:130px">Add  to  Wishlist</button> 
+
+</form>
+<br>    <button  name="share" id="share" class="btn btn-default"style="width:130px"><a href="{{ url_for('share',userid=userid) }}">Share Wishlist</a></button>
+</div>
+<div class="spacing"></div>
+
+<!-- View Wishlist -->
+
+{% if wishlists  %}
+
+  {% for wishes in wishlists %}
+  
+    <div class="display-wishlist">
+      <div class="float">
+        <img src="{{ wishes.image_url }}" style="max-width:100%"></img>
+      </div>
+      <div class="pad float">
+        <div class="title_bummy">
+          <h1>{{ wishes.title }}</h1>
+        </div>
+        <div>
+          <h3>Website Url</h3>
+          <a href="{{ wishes.item_url }}">{{ wishes.item_url }}</a>
+        </div>
+        <div class="discription_bummy">
+          <h3>Description</h3>
+          <p>{{ wishes.description }}</p>
+        </div>
+      </div>
+      <div class="del-position">
+        <form action="{{ url_for('delete_entry', userid= wishes.userid, itemid= wishes.itemid)}}" method="POST">
+          <input type="hidden" name="delete_entry" id="delete_entry" value="{{wishes.id}}" />
+  
+          <button type="submit" name="{{wishes.id}}" class="btn btn-sm btn-style"><span class="glyphicon glyphicon-trash"></span></button>
+        </form>
+      </div>
+      <div class="clear"></div>
+    </div>
+  
+  {% endfor %}
+
+{% else %}
+  <div>
+    <h1>There is no Wishes in your Wishlist</h1>
+  </div>
+{% endif %}
+
+{% endblock %}

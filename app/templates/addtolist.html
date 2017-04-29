@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block main %}
+ {% include "background.html" %}
+
+  <h1 class="page-header"></h1>
+<p class="lead"></p>
+
+  <div align="center" style="margin:auto" >
+    <img width="500" height="150" src ="/static/imgs/wishlist.png"/>
+        {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <div class="alert alert-success">
+        <ul class="flashes">
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+    {% endwith %}
+ </div>
+ 
+<div class="row" ng-app="myApp" ng-controller="myImage">
+
+
+<div class="col-sm-4">
+    <form method = "get" enctype="multipart/form-data" action="" role="form" ng-submit="get_pics($event)">
+        
+        <div>
+            <h1>
+                Please Start here
+            </h1>
+            <h4>
+                Please place the url where the image is.
+            </h4>
+        </div>
+        <div class="form-group">
+            <label for="item_url">Image URL:</label>
+            <input type="text" name="image_url" ng-model="image_url" class="form-control" placeholder="http://example/website/link" style="width:300px"/>
+        </div>
+        <button type="submit" name="add" class="btn btn-warning"style="width:60px">Go</button>
+    </form>
+</div>
+
+
+<div class="col-sm-8">
+    
+    <form class="row" action="{{ url_for('user_wishlist', userid=userid) }}" method="POST" enctype="multipart/form-data">
+        {{ form.csrf_token }}
+        
+        <div>
+            <h1>PLease select an Image</h1>
+        </div>
+        <div class="form-group display-pics scroll">
+            {% raw %}<div class="imgLinks col-md-3" ng-repeat="x in thumbs track by $index">
+                <img src="{{ x }}" name="image" class="img-thumbnail imgCheck"><input type="radio" name="image" value="{{ x }}" class="hidden" /></img>
+            </div>{% endraw %}
+        </div>
+        
+        
+        
+        <div class="form-group">
+            {{ form. title.label }}
+            {{ form. title(class='form-control',style="width:300px") }}
+        </div>
+        <div class="form-group">
+            {{ form. description.label }}
+            {{ form. description(class='form-control',style="width:300px") }}
+        </div>
+        <div class="form-group">
+            {{ form. item_url.label }}<span> Please place the same url used to search for the images</span>
+            {{ form. item_url(class='form-control',style="width:300px") }}
+        </div>
+        
+       <button type="submit" name="add" class="btn btn-warning"style="width:60px">Save</button>
+    </form>
+    
+</div>
+
+</div>
+<div>
+
+</div>
+
+{% endblock %}

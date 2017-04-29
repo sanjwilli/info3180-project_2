@@ -1,0 +1,26 @@
+APPROPRIATE AUTHORIZATION
+    (You should send the appropriate Authorization header with each request to your API. e.g. Authorization: Basic Sm9objphZGZhZGZkYWZzc2Rh
+    where Sm9objphZGZhZGZkYWZzc2Rh is the hash of the email address and password or using JWT e.g. Authorization: Bearer
+    eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ)
+
+----------------COMPLETED----------------
+
+LOGIN FORM *KEEZIA
+    (when a user successfully logs in they should see their current wishlist)
+
+REGISTRATION FORM *KEEZIA
+
+THUMBNAIL SCRAPPER  *KEEZIA
+    (accept the url give when adding item to wishlist)
+    
+VIEW ITEMS IN WISHLIST *Sanjay
+    ( Each wishlist item, should have a title,description, website address and a thumbnail image.
+    
+DELETE AN ITEM FROM WISHLIST * jhenai
+    (user should also have the ability to remove items from their wish-list)
+    
+ADD ITEMS TO WISH LIST *Sanjay
+    You should display a success message if the item is successfully added or failure otherwise
+    
+SHARE WISHLIST *Sanjay
+       not accepting url
